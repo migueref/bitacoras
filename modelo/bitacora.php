@@ -568,12 +568,15 @@
 			$nuevafecha = null;
 
 			while($i<5){
-				echo "<br />hgfhj".$dia;
+				echo "<br />dia".$i;
 
 				$dia = strtotime($dia);
-				echo "<br />dos".$dia;
 
 
+				$fechaActual = date('Y-m-j',$dia);
+
+				/*
+				$dia = $arreglo[$i];
 				$fechaActual = date('Y-m-j',$dia);
 
 				$fechadia = strtotime ('-1 day', strtotime($fechaActual));
@@ -582,9 +585,18 @@
 				$feriado = $fecha['mday']."-".$fecha['mon'];
 
 				$fechadia = date('Y-m-j',$fechadia);
-				$i++;
-				echo "<br />aumeto".$dia;
 
+				*/
+
+
+				$fechadia = strtotime ('-1 day', strtotime($fechaActual));
+				$fecha = getdate($fechadia);
+
+				$feriado = $fecha['mday']."-".$fecha['mon'];
+
+				$fechadia = date('Y-m-j',$fechadia);
+
+				echo "<br />aumeto".$dia;
 				$nuevafecha = strtotime ( '+1 day' , $dia ) ;
 				$nuevafecha = date ( 'Y-m-d' , $nuevafecha );
 				if($fecha["wday"]==0 or $fecha["wday"]==6){ //Si es fin de semana
@@ -595,13 +607,14 @@
 				}else {
 
 
+					$i++;
 
 
-					$newArray[$i]=$nuevafecha;
+					$newArray[$i]=$fechadia;
 
-					$dia = $nuevafecha;
+
 				}
-
+				$dia = $nuevafecha;
 			}
 			return $newArray;
 		}

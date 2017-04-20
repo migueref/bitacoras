@@ -15,7 +15,7 @@
 		$this->nombre_base ="bitacora";
 			$this->host        ="localhost";
 			$this->usuario     ="root";
-			$this->contra      ='root';
+			$this->contra      ='';
 			$this->mysqli      =null;;
 		}
 
@@ -67,7 +67,7 @@
 			$this->connect();
 			if ($rows =$this->mysqli->query($string)) {
 				foreach ($rows as $row )
-					$valor = $row[$campo]; //Se obtiene el id 
+					$valor = $row[$campo]; //Se obtiene el id
 					return $valor;
 			}
 		}
